@@ -1,0 +1,15 @@
+[
+  {
+    "id": "hidrosur:municipios",
+    "workspace":"hidrosur", 	
+    "url": "/geoserver/hidrosur/wms",
+    "capas":["hidrosur:municipios"],	
+    "name": "Mapa municipios"
+  },
+  {
+    "id": "hidrosur:precipitaciones_municipios",
+    "url": "/geoserver/hidrosur/wms",
+    "capas":["hidrosur:municipios","hidrosur:precipitaciones_acumuladas"],
+    "name": "Mapa acumuladas"
+  }
+]

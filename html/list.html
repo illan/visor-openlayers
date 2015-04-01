@@ -1,0 +1,12 @@
+	 <div>
+	 <ul class="layers">
+          <li ng-repeat="layer in mapas" class="thumbnail">
+            <a href="#/maps/{{layer.id}}" class="thumb"><img ng-src="/geoserver/web/resources/org.geoserver.web.demo.MapPreviewPage/null/img/icons/geosilk/map.png"></a>
+            <a href="#/maps/{{layer.id}}">{{layer.name}}</a>
+            <p>{{layer.snippet}}</p>
+          </li>
+        </ul>
+        </div>
+
+
+
