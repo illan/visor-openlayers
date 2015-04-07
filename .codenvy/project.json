@@ -1,1 +1,1 @@
-{"mixinTypes":["contribution"],"runners":{"configs":{}},"builders":{"configs":{}},"description":"visor","type":"blank","attributes":{"contribute_branch":["master"],"contribute_mode":["contribute"]}}
+{"mixinTypes":["contribution"],"builders":{"configs":{}},"runners":{"configs":{"system:/javascript/web/simple":{"ram":0,"variables":{},"options":{}}},"default":"system:/javascript/web/simple"},"description":"visor","type":"GruntJS","attributes":{"language":["javascript"],"framework":["BasicJS"],"contribute_branch":["master"],"contribute_mode":["contribute"]}}
