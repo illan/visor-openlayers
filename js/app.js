@@ -1,9 +1,14 @@
 		$(document).foundation('offcanvas', 'reflow');
 
 		var app=angular.module('app', ['mm.foundation','ngRoute']);
-		angular.module('app').controller('OffCanvasCtrl', function ($scope) {
-			//init();
-		});
+		angular.module('app').controller('OffCanvasCtrl', ['$scope','$http', function($scope,$http) {
+			 $http.get('config.json').success(function(data) {
+   			 $scope.data = data;
+				 $scope.mapas=data.mapas;
+				 $scope.servicios=data.servicios;
+			  });
+
+		}]);
 
 		app.config(['$routeProvider',
 		  function($routeProvider) {

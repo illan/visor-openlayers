@@ -1,4 +1,5 @@
-[
+{
+  "mapas":[
   {
     "id": "hidrosur:municipios",
     "workspace":"hidrosur", 	
@@ -12,4 +13,10 @@
     "capas":["hidrosur:municipios","hidrosur:precipitaciones_acumuladas"],
     "name": "Mapa acumuladas"
   }
-]
+	],
+  "servicios":[
+    {"name":"test","url":"http://localhost"},
+    {"name":"test 2","url":"http://localhost"}
+  ]
+  
+}
