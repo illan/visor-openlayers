@@ -75,7 +75,7 @@
                 map.addControl(new OpenLayers.Control.Scale($('scale')));
                 map.addControl(new OpenLayers.Control.MousePosition({element: $('location')}));
 					 map.addControl(new OpenLayers.Control.LayerSwitcher({ roundedCornerColor : '#0a8161' }));
-                map.zoomToExtent(bounds);
+              //  map.zoomToExtent(bounds);
                 
                 // wire up the option button
                 $("#options").on("click", function (event){
