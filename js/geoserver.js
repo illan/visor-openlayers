@@ -13,10 +13,10 @@
 				GEOSERVER.configure=function (data,mapa){
               if (mapa){
                 
-               $.merge(mapa,data)
+               $.extend(mapa,data)
                
               } else {
-              	$.merge(this,data);
+              	$.extend(this,data);
               }  
             }
             GEOSERVER.getById=function (id){
