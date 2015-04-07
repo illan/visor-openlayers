@@ -27,7 +27,7 @@
               return null;
             }  
             GEOSERVER.loader=function (id){
-              	var mapa=this.getById(id)[0];
+              	var mapa=this.getById(id);
         				 if (mapa.type=="JSON"){
                             $http.get(mapa.path)
                               .success(function(data){

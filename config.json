@@ -14,7 +14,7 @@
                     "styles":"",
                     "transparent":true,
                     "isBaseLayer":true,
-                    "xy":{'EPSG:23029' : false}
+                    "xy":{"EPSG:23029" : false}
           				},
                     {
                       "name":"tiger:tiger_roads",
@@ -23,7 +23,7 @@
                       "styles":"",
                       "transparent":true,
                       "isBaseLayer":false,
-                      "xy":{'EPSG:23029' : false}
+                      "xy":{"EPSG:23029" : false}
                     }
           ]        
         },
@@ -41,7 +41,7 @@
                     "styles":"",
                     "transparent":true,
                     "isBaseLayer":true,
-                    "xy":{'EPSG:23029' : false}
+                    "xy":{"EPSG:23029" : false}
           				},
                     {
                       "name":"tiger_roads",
@@ -50,7 +50,7 @@
                       "styles":"",
                       "transparent":true,
                       "isBaseLayer":false,
-                      "xy":{'EPSG:23029' : false}
+                      "xy":{"EPSG:23029" : false}
                     }
           ]
           
