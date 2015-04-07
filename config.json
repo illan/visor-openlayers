@@ -15,8 +15,8 @@
   }
 	],
   "servicios":[
-    {"name":"test","url":"http://localhost"},
-    {"name":"test 2","url":"http://localhost"}
+    {"name":"WMS","url":"http://siha-geoserver.adasasistemas.com/geoserver/wms.xml"},
+    {"name":"CSW","url":"http://siha-geoserver.adasasistemas.com/geoserver/csw.xml"}
   ]
   
 }
