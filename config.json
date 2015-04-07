@@ -1,28 +1,73 @@
 {
   "mapas":[
-  {
-    "id": "hidrosur:municipios",
-    "workspace":"hidrosur", 	
-    "url": "/geoserver/hidrosur/wms",
-    "capas":["hidrosur:municipios"],	
-    "name": "Mapa municipios"
-  },
-  {
-    "id": "hidrosur:precipitaciones_municipios",
-    "url": "/geoserver/hidrosur/wms",
-    "capas":["hidrosur:municipios","hidrosur:precipitaciones_acumuladas"],
-    "name": "Mapa acumuladas"
-  },
-  {
-    "id": "tiger:tiger_roads",
-    "url": "/geoserver/tiger/wms",
-    "capas":["tiger:tiger_roads"],
-    "name": "Mapa acumuladas"
-  }
+        {
+          "id": "gmaps",
+          "workspace":"hidrosur", 	
+          "name": "Mapa municipios",
+          "bounds":[244253.553327678, 3987116.51693726, 615949.63511322, 4156969.69494491],
+          "type":"WMS",
+            "WMS":[
+                    {
+                    "name":"",
+                    "url":"/geoserver/tiger/wms",
+                    "layers":["tiger:poly_landmarks"],
+                    "styles":"",
+                    "transparent":true,
+                    "isBaseLayer":true,
+                    "xy":{'EPSG:23029' : false}
+          				},
+                    {
+                      "name":"tiger:tiger_roads",
+                      "url":"/geoserver/tiger/wms",
+                      "layers":["tiger:tiger_roads"],
+                      "styles":"",
+                      "transparent":true,
+                      "isBaseLayer":false,
+                      "xy":{'EPSG:23029' : false}
+                    }
+          ]        
+        },
+        {
+          "id": "landmarks",
+          "name": "Manhattan (NY) landmarks",
+          "workspace":"tiger",
+          "bounds":[-74.047185, 40.679648,-73.90782, 40.882078],
+          "type":"WMS",
+          "WMS":[
+                    {
+                    "name":"poly_landmarks",
+                    "url":"/geoserver/tiger/wms",
+                    "layers":["tiger:poly_landmarks"],
+                    "styles":"",
+                    "transparent":true,
+                    "isBaseLayer":true,
+                    "xy":{'EPSG:23029' : false}
+          				},
+                    {
+                      "name":"tiger_roads",
+                      "url":"/geoserver/tiger/wms",
+                      "layers":["tiger:tiger_roads"],
+                      "styles":"",
+                      "transparent":true,
+                      "isBaseLayer":false,
+                      "xy":{'EPSG:23029' : false}
+                    }
+          ]
+          
+        },
+        {
+          "id": "precipitaciones",
+          "workspace": "hidrosur",
+          "type":"JSON",
+          "name": "Mapa precipitaciones",
+          "path":"/mapas/precipitaciones.json"
+        }
 	],
   "servicios":[
     {"name":"WMS","url":"http://siha-geoserver.adasasistemas.com/geoserver/wms.xml"},
     {"name":"CSW","url":"http://siha-geoserver.adasasistemas.com/geoserver/csw.xml"}
-  ]
+  ],
+  workspace:'tiger',
+    
   
 }

@@ -6,6 +6,15 @@
    			 $scope.data = data;
 				 $scope.mapas=data.mapas;
 				 $scope.servicios=data.servicios;
+            $.extend(GEOSERVER,{
+              pureCoverage:false,
+              workspace:data.workspace,
+              baselayer:data.baselayer,
+              getPath:function(){ 
+                	return "/geoserver/_WS_/wms".replace("_WS_",this.workspace); 
+              }
+            });  
+
 			  });
 
 		}]);
@@ -21,11 +30,6 @@
 			        templateUrl: 'html/maps.html',
 			        controller: 'MapsCtrl'
 			      }).
-
-			      when('/acumuladas', {
-			        templateUrl: 'html/maps.html',
-			        controller: 'AccuCtrl'
-			      }).
 			      when('/gmaps', {
 			        templateUrl: 'html/maps.html',
 			        controller: 'GMapsCtrl'
@@ -37,33 +41,23 @@
 
 		app.controller('ListCtrl', ['$scope','$http', function($scope,$http) {
 			 $http.get('config.json').success(function(data) {
-   				 $scope.data = data;
-				 $scope.mapas=data.mapas;
-				 $scope.servicios=data.servicios;
+   			$scope.data = data;
+            GEOSERVER.configure(data);
 			  });
-
 			  $scope.orderProp = 'name';
 		}]);
 
-		app.controller('AccuCtrl',  ['$scope', '$routeParams','$http', function($scope, $routeParams,$http) {
-			  $scope.layer = "hidrosur:precipitaciones_municipios";
-			  $scope.leyendUrl="/geoserver/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=";
-			  init($scope.layer);
-		}]);
-
-
 		app.controller('MapsCtrl', ['$scope', '$routeParams','$http', function($scope, $routeParams,$http) {
-			$scope.layer = $routeParams.layerId;
 			$scope.leyendUrl="/geoserver/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=";
-			$scope.ws = $routeParams.layerId.split(":")[0];
-			//$http.get("maps/"+$scope.layer+".json").success(function(data){
-				//	$scope.current=data;
-					init($scope.layer,$scope.ws);
-			//});		
+         var id=$routeParams.layerId;
+         GEOSERVER.loader(id);
+			
+        
+        
 		}]);
 		
 		app.controller('GMapsCtrl', ['$scope', '$routeParams', function($scope, $routeParams) {
 			$scope.layer = $routeParams.layerId;
 			$scope.leyendUrl="/geoserver/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=";
-			loader();
+			GEOSERVER.loader($routeParams.layerId);
 		}]);

@@ -1,3 +1,23 @@
-﻿{
-	
+{
+	"WMS":[
+                    {
+                    "name":"poly_landmarks",
+                    "url":"/geoserver/tiger/wms",
+                    "layers":["tiger:poly_landmarks"],
+                    "styles":"",
+                    "transparent":true,
+                    "isBaseLayer":true,
+                    "xy":{'EPSG:23029' : false}
+          				},
+                    {
+                      "name":"tiger_roads",
+                      "url":"/geoserver/tiger/wms",
+                      "layers":["tiger:tiger_roads"],
+                      "styles":"",
+                      "transparent":true,
+                      "isBaseLayer":false,
+                      "xy":{'EPSG:23029' : false}
+                    }
+          ]
+          
 }
