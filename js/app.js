@@ -59,5 +59,5 @@
 		app.controller('GMapsCtrl', ['$scope', '$routeParams', function($scope, $routeParams) {
 			$scope.layer = $routeParams.layerId;
 			$scope.leyendUrl="/geoserver/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=";
-			GEOSERVER.loader($routeParams.layerId);
+			GEOSERVER.view($routeParams.layerId);
 		}]);

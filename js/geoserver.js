@@ -24,7 +24,7 @@
                 var mapa=this.mapas[indx];
                 	if (mapa.id==id) return mapa;
               }
-              retur null;
+              return null;
             }  
             GEOSERVER.loader=function (id){
               	var mapa=this.getById(id)[0];
