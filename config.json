@@ -15,7 +15,7 @@
   },
   {
     "id": "tiger:tiger_roads",
-    "url": "/geoserver/hidrosur/wms",
+    "url": "/geoserver/tiger/wms",
     "capas":["tiger:tiger_roads"],
     "name": "Mapa acumuladas"
   }

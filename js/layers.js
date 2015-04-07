@@ -7,9 +7,9 @@
             // make OL compute scale according to WMS spec
             OpenLayers.DOTS_PER_INCH = 25.4 / 0.28;
             CURRENT=1;
-	    GEOSERVER_URL="/geoserver/hidrosur/wms";
+	    		GEOSERVER_URL=function(ws){ return "/geoserver/_WS_/wms".replace("_WS_",ws); }
 
-            function init(BASELAYER,LAYER){
+            function init(LAYER,WS){
                 // if this is just a coverage or a group of them, disable a few items,
                 // and default to jpeg format
                 format = 'image/png';
@@ -37,9 +37,9 @@
                 map = new OpenLayers.Map('map', options);
             
 
-               
+               /**
                 map.addLayer(new OpenLayers.Layer.WMS(
-                    "Municipios", GEOSERVER_URL,
+                    "Municipios", GEOSERVER_URL(WS),
                     {
                         "LAYERS": BASELAYER,
                         "STYLES": '',
@@ -54,9 +54,10 @@
                        //yx : {'EPSG:23029' : false}
                     } 
                 ));
+                **/
                 // setup tiled layer
                map.addLayer(new OpenLayers.Layer.WMS(
-                    "Precipitaciones", GEOSERVER_URL,
+                    "Precipitaciones",  GEOSERVER_URL(WS),
                     {
                         "LAYERS": LAYER,
                         "STYLES": '',
@@ -128,7 +129,7 @@
                     if(map.layers[CURRENT].params.FEATUREID) {
                         params.featureid = map.layers[CURRENT].params.FEATUREID;
                     }
-                    OpenLayers.loadURL(GEOSERVER_URL, params, this, setHTML, setHTML);
+                    OpenLayers.loadURL( GEOSERVER_URL(WS), params, this, setHTML, setHTML);
                     OpenLayers.Event.stop(e);
                 });
             }

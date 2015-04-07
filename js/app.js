@@ -55,10 +55,10 @@
 		app.controller('MapsCtrl', ['$scope', '$routeParams','$http', function($scope, $routeParams,$http) {
 			$scope.layer = $routeParams.layerId;
 			$scope.leyendUrl="/geoserver/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=";
-			
+			$scope.ws = $routeParams.layerId.split(":")[0];
 			//$http.get("maps/"+$scope.layer+".json").success(function(data){
 				//	$scope.current=data;
-					init($scope.layer);
+					init($scope.layer,$scope.ws);
 			//});		
 		}]);
 		
