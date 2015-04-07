@@ -66,8 +66,5 @@
   "servicios":[
     {"name":"WMS","url":"http://siha-geoserver.adasasistemas.com/geoserver/wms.xml"},
     {"name":"CSW","url":"http://siha-geoserver.adasasistemas.com/geoserver/csw.xml"}
-  ],
-  workspace:'tiger',
-    
-  
+  ]
 }
