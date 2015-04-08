@@ -12,7 +12,7 @@
                     {
                     "name":"google",
                     "type":"GMAPS",
-                    "options":google.maps.MapTypeId.SATELLITE,
+                    "view":"SATELLITE",
                     "transparent":true,
                     "isBaseLayer":true,
                     "xy":{"EPSG:23029" : false}

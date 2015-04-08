@@ -81,7 +81,7 @@
                            type: type
                         });
 
-              			})(layer.name,layer.options));
+              			})(layer.name,layer.view?google.maps.MapTypeId[layer.view]:google.maps.MapTypeId.SATELLITE));
                  }else if (type=="WMS"){
                     list.push(new OpenLayers.Layer[type](
                           layer.name,
