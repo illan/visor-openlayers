@@ -49,7 +49,7 @@
 
 		app.controller('MapsCtrl', ['$scope', '$routeParams','$http', function($scope, $routeParams,$http) {
 			$scope.leyendUrl="/geoserver/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=";
-         var id=$routeParams.idd;
+         var id=$routeParams.id;
          GEOSERVER.loader(id);
 			
         
