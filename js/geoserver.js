@@ -68,7 +68,7 @@
                     controls: [],
                     maxExtent:bounds ,
                     maxResolution: 1451.9378194747733,
-                    projection: ,
+                    projection:mapa.projection||GEOSERVER.projection ,
                     units: 'm'
                 });
             
