@@ -8,19 +8,22 @@
               current:-1,
               bounds:[],
               mapas:[],
-              servicios:[]
+              servicios:[],
+              projection:"EPSG:25830",
+               maxBBox :[-3789294.8875171,2523306.0998924,2472426.4684829,6324366.6417768]
             }
           
 				GEOSERVER.configure=function (data,mapa){
               if (mapa){
                 
-               $.extend(mapa,data)
+               	$.extend(mapa,data)
                
               } else {
-              	$.extend(this,data);
+              		$.extend(this,data);
+						this.configured=true;	                	
               }  
             }
-            GEOSERVER.getById=function (id){
+            GEOSERVER.getById=function getById(id){
               for (var indx in this.mapas){
                 var mapa=this.mapas[indx];
                 	if (mapa.id==id) return mapa;
@@ -33,13 +36,14 @@
                             $.getJSON(mapa.path,{
                               success:function(data){
                                   //	$scope.current=data;
-                                     this.configure(data,mapa);
+                                     GEOSERVER.configure(data,mapa);
+                                		 GEOSERVER.show(id);
                                },
                               error:function(e){
                                      console.log(e);              			
                               }});
-                   }
-			        	this.show(id);	
+                   }else
+			        		GEOSERVER.show(id);	
             }  
             	
 				GEOSERVER.buildBounds=function buildBounds(arr){
@@ -60,11 +64,11 @@
                     format = "image/jpeg";
                 }
 					 var bounds= this.buildBounds(mapa.bounds||GEOSERVER.bounds);
-                var map= new OpenLayers.Map('map', {
+                var map = GEOSERVER.map = new OpenLayers.Map('map', {
                     controls: [],
                     maxExtent:bounds ,
                     maxResolution: 1451.9378194747733,
-                    projection: "EPSG:25830",
+                    projection: ,
                     units: 'm'
                 });
             

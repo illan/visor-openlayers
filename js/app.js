@@ -22,20 +22,20 @@
 		app.config(['$routeProvider',
 		  function($routeProvider) {
 			    $routeProvider.
-			      when('/landing', {
+			      when('/', {
 			        templateUrl: 'html/list.html',
 			        controller: 'ListCtrl'
 			      }).
-			      when('/maps/:layerId', {
+			      when('/maps/:id', {
 			        templateUrl: 'html/maps.html',
 			        controller: 'MapsCtrl'
 			      }).
-			      when('/gmaps', {
-			        templateUrl: 'html/maps.html',
-			        controller: 'GMapsCtrl'
+			      when('/maps/:id/details', {
+			        templateUrl: 'html/details.html',
+			        controller: 'DetailsCtrl'
 			      }).
 			      otherwise({
-			        redirectTo: '/landing'
+			        redirectTo: '/'
 			      });
 		  }]);
 
@@ -49,15 +49,14 @@
 
 		app.controller('MapsCtrl', ['$scope', '$routeParams','$http', function($scope, $routeParams,$http) {
 			$scope.leyendUrl="/geoserver/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=";
-         var id=$routeParams.layerId;
+         var id=$routeParams.idd;
          GEOSERVER.loader(id);
 			
         
         
 		}]);
 		
-		app.controller('GMapsCtrl', ['$scope', '$routeParams', function($scope, $routeParams) {
+		app.controller('DetailsCtrl', ['$scope', '$routeParams', function($scope, $routeParams) {
 			$scope.layer = $routeParams.layerId;
-			$scope.leyendUrl="/geoserver/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=";
 			GEOSERVER.view($routeParams.layerId);
 		}]);
