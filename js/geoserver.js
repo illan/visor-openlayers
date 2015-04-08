@@ -33,10 +33,10 @@
                               success:function(data){
                                   //	$scope.current=data;
                                      this.configure(data,mapa);
-                               }),
+                               },
                               error:function(e){
                                      console.log(e);              			
-                               }});
+                              }});
                    }
 			        	this.show(id);	
             }  
