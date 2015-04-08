@@ -6,6 +6,7 @@
 
 	    		var GEOSERVER={
               current:-1,
+              bounds:
               mapas:[],
               servicios:[]
             }
@@ -58,7 +59,7 @@
                     document.getElementById('jpeg').selected = true;
                     format = "image/jpeg";
                 }
-					 var bounds= this.buildBounds(mapa.bounds);
+					 var bounds= this.buildBounds(mapa.bounds||GEOSERVER.bounds);
                 var map= new OpenLayers.Map('map', {
                     controls: [],
                     maxExtent:bounds ,

@@ -1,22 +1,22 @@
 {
 	"WMS":[
                     {
-                    "name":"poly_landmarks",
-                    "url":"/geoserver/tiger/wms",
-                    "layers":["tiger:poly_landmarks"],
-                    "styles":"",
-                    "transparent":true,
-                    "isBaseLayer":true,
-                    "xy":{'EPSG:23029' : false}
-          				},
-                    {
-                      "name":"tiger_roads",
-                      "url":"/geoserver/tiger/wms",
-                      "layers":["tiger:tiger_roads"],
+                      "name":"municipios",
+                      "url":"/geoserver/SIHA/wms",
+                      "layers":["SIHA:municipios"],
                       "styles":"",
                       "transparent":true,
                       "isBaseLayer":false,
-                      "xy":{'EPSG:23029' : false}
+                      "xy":{"EPSG:23029" : false}
+                    },
+               	  {
+                      "name":"estaciones",
+                      "url":"/geoserver/SIHA/wms",
+                      "layers":["SIHA:estaciones"],
+                      "styles":"",
+                      "transparent":true,
+                      "isBaseLayer":false,
+                      "xy":{"EPSG:23029" : false}
                     }
           ]
           

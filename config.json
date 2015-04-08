@@ -1,4 +1,5 @@
 {
+  "bounds":[-2410982.391673,3132111.7637233,1106343.9014078,5504717.1213647],
   "mapas":[
         {
           "id": "gmaps",
@@ -6,20 +7,29 @@
           "name": "Mapa municipios",
           "bounds":[244253.553327678, 3987116.51693726, 615949.63511322, 4156969.69494491],
           "type":"WMS",
+           
             "WMS":[
                     {
-                    "name":"",
-                    "url":"/geoserver/tiger/wms",
-                    "layers":["tiger:poly_landmarks"],
-                    "styles":"",
+                    "name":"google",
+                    "type":"GMAPS",
+                    "options":google.maps.MapTypeId.SATELLITE,
                     "transparent":true,
                     "isBaseLayer":true,
                     "xy":{"EPSG:23029" : false}
           				},
                     {
-                      "name":"tiger:tiger_roads",
-                      "url":"/geoserver/tiger/wms",
-                      "layers":["tiger:tiger_roads"],
+                      "name":"municipios",
+                      "url":"/geoserver/SIHA/wms",
+                      "layers":["SIHA:municipios"],
+                      "styles":"",
+                      "transparent":true,
+                      "isBaseLayer":false,
+                      "xy":{"EPSG:23029" : false}
+                    },
+               	  {
+                      "name":"estaciones",
+                      "url":"/geoserver/SIHA/wms",
+                      "layers":["SIHA:estaciones"],
                       "styles":"",
                       "transparent":true,
                       "isBaseLayer":false,
@@ -57,8 +67,9 @@
         },
         {
           "id": "precipitaciones",
-          "workspace": "hidrosur",
+          "workspace": "SIHA",
           "type":"JSON",
+          "bounds":[-74.047185, 40.679648,-73.90782, 40.882078],
           "name": "Mapa precipitaciones",
           "path":"/mapas/precipitaciones.json"
         }

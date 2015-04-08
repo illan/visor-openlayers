@@ -42,17 +42,17 @@
          ],
          projection: 'EPSG:3857',
          units: 'm',
-            maxExtent:  buildBounds(maxBBox),
-         	restrictedExtent: buildBounds(maxBBox),
+            maxExtent: GEOSERVER.buildBounds(maxBBox),
+         	restrictedExtent: GEOSERVER.buildBounds(maxBBox),
             resolutions: [4891.96980957, 2445.984904785, 1222.992452393, 611.4962261963, 305.7481130981, 152.8740565491, 76.43702827454, 38.21851413727, 19.10925706863, 9.554628534317, 4.777314267159, 2.388657133579]
 	    });
 
 			
         
-      
-		gmap.addLayers(buildLayers(getById(id)))
-	   gmap.zoomToExtent( buildBounds([-2410982.391673,3132111.7637233,1106343.9014078,5504717.1213647]));
-		gmap.zoomTo(0);
+      var mapa=GEOSERVER.getById(id);
+		gmap.addLayers(GEOSERVER.buildLayers(mapa))
+	  // gmap.zoomToExtent(GEOSERVER.buildBounds([-2410982.391673,3132111.7637233,1106343.9014078,5504717.1213647]));
+		//gmap.zoomTo(0);
 
 		try{
 			//$x('//*[@class="gm-style"]/div[2]')[0].style.display="none";
@@ -60,27 +60,28 @@
 		}catch(ex){}
 
 
-		function buildGoogleLayer(name,type) {
-            var zoomLevels = [5, 16];
-            return new OpenLayers.Layer.Google(name, {
-               sphericalMercator: true,
-               minZoomLevel: zoomLevels[0],
-               maxZoomLevel: zoomLevels[1],
-               type: type
-            });
-	
-		}
-
 		GEOSERVER.buildLayers=function buildLayers(mapa){
             	var tileSize = [256, 256];
-					var gutter=0;
+        			var gutter=0;
                 // setup tiled layer
+                // 
+              
+
                var list=[]; 
         			
 					for (var layer in mapa[mapa.type]){
                  var type=layer.type||mapa.type;
                  if (type=="GMAPS"){
-                  list.push(buildGoogleLayer(layer.name, google.maps.MapTypeId.SATELLITE))
+                 		 list.push((function buildGoogleLayer(name,type) {
+                        var zoomLevels = [5, 16];
+                        return new OpenLayers.Layer.Google(name, {
+                           sphericalMercator: true,
+                           minZoomLevel: zoomLevels[0],
+                           maxZoomLevel: zoomLevels[1],
+                           type: type
+                        });
+
+              			})(layer.name,layer.options));
                  }else if (type=="WMS"){
                     list.push(new OpenLayers.Layer[type](
                           layer.name,
