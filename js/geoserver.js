@@ -6,7 +6,7 @@
 
 	    		var GEOSERVER={
               current:-1,
-              bounds:
+              bounds:[],
               mapas:[],
               servicios:[]
             }
