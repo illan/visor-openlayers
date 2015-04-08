@@ -29,13 +29,14 @@
             GEOSERVER.loader=function (id){
               	var mapa=this.getById(id);
         				 if (mapa.type=="JSON"){
-                            $http.get(mapa.path)
-                              .success(function(data){
+                            $.getJSON(mapa.path,{
+                              success:function(data){
                                   //	$scope.current=data;
                                      this.configure(data,mapa);
-                               }).error(function(e){
-                                     this.log(e);              			
-                               });
+                               }),
+                              error:function(e){
+                                     console.log(e);              			
+                               }});
                    }
 			        	this.show(id);	
             }  
@@ -76,7 +77,7 @@
                 map.addControl(new OpenLayers.Control.MousePosition({element: $('location')}));
 					 map.addControl(new OpenLayers.Control.LayerSwitcher({ roundedCornerColor : '#0a8161' }));
               //  map.zoomToExtent(bounds);
-                
+                try{
                 // wire up the option button
                 $("#options").on("click", function (event){
                     var toolbar = document.getElementById("toolbar");
@@ -133,6 +134,7 @@
                     OpenLayers.loadURL( GEOSERVER_URL(WS), params, this, setHTML, setHTML);
                     OpenLayers.Event.stop(e);
                 });
+                }catch(ex){console.log(ex);} 
             }
             
             // sets the HTML provided into the nodelist element
