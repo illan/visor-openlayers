@@ -5,6 +5,7 @@
           "id": "gmaps",
           "workspace":"SIHA", 	
           "name": "Integracion GoogleMaps ",
+          "url":"http://siha-geoserver.adasasistemas.com/geoserver/SIHA/wms",
           "bounds":[-19799.8828125, 3897717.75,1132637, 4864023.5],
           "type":"WMS",
           "projection":"EPSG:23029", 
@@ -40,6 +41,7 @@
         {
           "id": "Manhattan",
           "name": "Manhattan (NY) landmarks",
+          "url":"http://siha-geoserver.adasasistemas.com/geoserver/SIHA/wms",
           "workspace":"tiger",
           "bounds":[-74.047185, 40.679648,-73.90782, 40.882078],
           "type":"WMS",
@@ -68,6 +70,7 @@
       {
           "id": "SIHA",
           "name": "multiples capas",
+			 "url":"http://siha-geoserver.adasasistemas.com/geoserver/SIHA/wms",
           "workspace":"SIHA",
           "bounds":[-19799.8828125, 3897717.75,1132637, 4864023.5],
           "type":"WMS",
