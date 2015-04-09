@@ -6,7 +6,7 @@
                       "layers":["SIHA:municipios"],
                       "styles":"",
                       "transparent":true,
-                      "isBaseLayer":false,
+                      "isBaseLayer":true,
                       "xy":{"EPSG:23029" : false}
                     },
                	  {

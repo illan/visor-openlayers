@@ -1,11 +1,11 @@
 {
-  "bounds":[-2410982.391673,3132111.7637233,1106343.9014078,5504717.1213647],
+  "bounds":[-19799.8828125, 3897717.75,1132637, 4864023.5],
   "mapas":[
         {
           "id": "gmaps",
-          "workspace":"hidrosur", 	
-          "name": "Mapa municipios",
-          "bounds":[244253.553327678, 3987116.51693726, 615949.63511322, 4156969.69494491],
+          "workspace":"SIHA", 	
+          "name": "Integracion GoogleMaps ",
+          "bounds":[-19799.8828125, 3897717.75,1132637, 4864023.5],
           "type":"WMS",
            
             "WMS":[
@@ -68,7 +68,7 @@
       {
           "id": "SIHA",
           "name": "Manhattan (NY) landmarks",
-          "workspace":"tiger",
+          "workspace":"SIHA",
           "bounds":[-74.047185, 40.679648,-73.90782, 40.882078],
           "type":"WMS",
           "WMS":[
@@ -97,7 +97,6 @@
           "id": "precipitaciones",
           "workspace": "SIHA",
           "type":"JSON",
-          "bounds":[-74.047185, 40.679648,-73.90782, 40.882078],
           "name": "Mapa precipitaciones",
           "path":"/mapas/precipitaciones.json"
         }
