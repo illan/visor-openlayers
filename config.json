@@ -7,7 +7,7 @@
           "name": "Integracion GoogleMaps ",
           "bounds":[-19799.8828125, 3897717.75,1132637, 4864023.5],
           "type":"WMS",
-           
+          "projection":"EPSG:23029", 
             "WMS":[
                     {
                     "name":"google",
@@ -38,7 +38,7 @@
           ]        
         },
         {
-          "id": "landmarks",
+          "id": "Manhattan",
           "name": "Manhattan (NY) landmarks",
           "workspace":"tiger",
           "bounds":[-74.047185, 40.679648,-73.90782, 40.882078],

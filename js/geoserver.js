@@ -1,4 +1,10 @@
+
 try{
+  				OpenLayers= (OpenLayers)||ol;
+}catch(e){
+  				
+  				OpenLayers=ol;
+}  
             // pink tile avoidance
             OpenLayers.IMAGE_RELOAD_ATTEMPTS = 5;
             // make OL compute scale according to WMS spec
@@ -50,6 +56,52 @@ try{
               	var bounds=arr||GEOSERVER.bounds
         			return new OpenLayers.Bounds(arr[0],arr[1],arr[2],arr[3]);
       		}
+            
+            
+            	GEOSERVER.buildLayers=function buildLayers(mapa){
+            	var tileSize = [256, 256];
+        			var gutter=0;
+                // setup tiled layer
+                // 
+              
+
+               var list=[]; 
+        			
+					for (var layer in mapa[mapa.type]){
+                 var type=layer.type||mapa.type;
+                 if (type=="GMAPS"){
+                 		 list.push((function buildGoogleLayer(name,type) {
+                        var zoomLevels = [5, 16];
+                        return new ol.Layer.Google(name, {
+                           sphericalMercator: true,
+                           minZoomLevel: zoomLevels[0],
+                           maxZoomLevel: zoomLevels[1],
+                           type: type
+                        });
+
+              			})(layer.name,layer.view?google.maps.MapTypeId[layer.view]:google.maps.MapTypeId.SATELLITE));
+                 }else if (type=="WMS"){
+                    list.push(new ol.Layer[type](
+                          layer.name,
+                          layer.url,
+                          {
+                              "LAYERS": layer.layers,
+                              "STYLES": layer.styles||"",
+                              transparent: layer.transparent?"TRUE":"FALSE",
+                              format:  'image/png'
+                          },
+                          {
+                             singleTile: true, 
+                             ratio: 1, 
+                             isBaseLayer:layer.isBaseLayer,
+                             yx : layer.xy
+                          } 
+                  ));
+              	 } 
+               }
+     		return list;
+    }         
+
             GEOSERVER.show=function (id){
               
               /***
@@ -136,20 +188,68 @@ GEOSERVER.initOpenLayers=function(id){
       });
   
       var capas= [] ;
-  		mapa.layers.forEach(function(layerId){
-          capas.push(new ol.layer.Tile({
-          visible: false,
-          source: new ol.source.TileWMS({
-            url: mapa.url ,
-            params: {'FORMAT': format, 
-                     'VERSION': '1.1.1',
-                     tiled: true,
-                  LAYERS: layerId,
-                  STYLES: '',
-            }
-          })
-        }));
-      });  
+  		//mapa.layers.forEach(function(layerId){
+  		for (var indx in mapa[mapa.type]){
+        var layer=mapa[mapa.type][indx];
+        /**
+                        capas.push(new ol.layer.Tile({
+                        visible: false,
+                        source: new ol.source.TileWMS({
+                          url: mapa.url ,
+                          params: {'FORMAT': format, 
+                                   'VERSION': '1.1.1',
+                                   tiled: true,
+                                LAYERS: layerId,
+                                STYLES: '',
+                          }
+                        })
+                      }));
+          **/
+                var type=layer.type||mapa.type;
+                 if (type=="GMAPS"){
+                 		 capas.push((function buildGoogleLayer(name,type) {
+                        var zoomLevels = [5, 16];
+                        return new ol.Layer.Google(name, {
+                           sphericalMercator: true,
+                           minZoomLevel: zoomLevels[0],
+                           maxZoomLevel: zoomLevels[1],
+                           type: type
+                        });
+
+              			})(layer.name,layer.view?google.maps.MapTypeId[layer.view]:google.maps.MapTypeId.SATELLITE));
+                 }else if (type=="WMS"){
+                    capas.push(new ol.layer.Tile({
+                        visible: false,
+                        source: new ol.source.TileWMS({
+                          url: layer.url ,
+                          params: {'FORMAT': format, 
+                                   'VERSION': '1.1.1',
+                                   tiled: true,
+                                LAYERS: layer.layers,
+                                STYLES: '',
+                                transparent: layer.transparent?"TRUE":"FALSE",
+                          }
+                        })
+                      })
+                      /**new ol.Layer[type](
+                          layer.name,
+                          layer.url,
+                          {
+                              "LAYERS": layer.layers,
+                              "STYLES": layer.styles||"",
+                              transparent: layer.transparent?"TRUE":"FALSE",
+                              format:  'image/png'
+                          },
+                          {
+                             singleTile: true, 
+                             ratio: 1, 
+                             isBaseLayer:layer.isBaseLayer,
+                             yx : layer.xy
+                          } 
+                  )**/
+                    );
+                 }
+      };  
           map = this.map = new ol.Map({
             controls: ol.control.defaults({
               attribution: false
@@ -306,8 +406,3 @@ GEOSERVER.initOpenLayers=function(id){
 }
 
 
-            
-}catch(e){
-  
-  console.log(e);
-}
