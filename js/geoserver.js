@@ -10,7 +10,7 @@
               mapas:[],
               servicios:[],
               projection:"EPSG:25830",
-               maxBBox :[-3789294.8875171,2523306.0998924,2472426.4684829,6324366.6417768]
+              maxBBox :[-3789294.8875171,2523306.0998924,2472426.4684829,6324366.6417768]
             }
           
 				GEOSERVER.configure=function (data,id){
@@ -28,7 +28,7 @@
                 	if (mapa.id==id) return mapa;
               }
               return null;
- 
+            }
         	  GEOSERVER.loader=function (id){
               	var mapa=this.getById(id);
         				 if (mapa.type=="JSON"){
