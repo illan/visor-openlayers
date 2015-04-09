@@ -1,8 +1,9 @@
-
+try{
             // pink tile avoidance
             OpenLayers.IMAGE_RELOAD_ATTEMPTS = 5;
             // make OL compute scale according to WMS spec
             OpenLayers.DOTS_PER_INCH = 25.4 / 0.28;
+				var map;
 
 	    		var GEOSERVER={
               current:-1,
@@ -63,7 +64,7 @@
                     format = "image/jpeg";
                 }
 					 var bounds= this.buildBounds(mapa.bounds||GEOSERVER.bounds);
-                var map = GEOSERVER.map = new OpenLayers.Map('map', {
+                map = GEOSERVER.map = new OpenLayers.Map('map', {
                     controls: [],
                     maxExtent:bounds ,
                     maxResolution: 1451.9378194747733,
@@ -80,67 +81,10 @@
                 map.addControl(new OpenLayers.Control.Scale($('scale')));
                 map.addControl(new OpenLayers.Control.MousePosition({element: $('location')}));
 					 map.addControl(new OpenLayers.Control.LayerSwitcher({ roundedCornerColor : '#0a8161' }));
-              //  map.zoomToExtent(bounds);
-                try{
-                // wire up the option button
-                $("#options").on("click", function (event){
-                    var toolbar = document.getElementById("toolbar");
-                    if (toolbar.style.display == "none") {
-                        toolbar.style.display = "block";
-                    }
-                    else {
-                        toolbar.style.display = "none";
-                    }
-                    event.stopPropagation();
-                    map.updateSize()
-		            });
-                
-                // support GetFeatureInfo
-                map.events.register('click', map, function (e) {
-                    $('#nodelist').innerHTML = "Cargando...";
-
-                    var params = {
-                        REQUEST: "GetFeatureInfo",
-                        EXCEPTIONS: "application/vnd.ogc.se_xml",
-                        BBOX: map.getExtent().toBBOX(),
-                        SERVICE: "WMS",
-                        INFO_FORMAT: 'text/html',
-                        QUERY_LAYERS: map.layers[CURRENT].params.LAYERS,
-                        FEATURE_COUNT: 50,
-                        "Layers": LAYER,
-                        WIDTH: map.size.w,
-                        HEIGHT: map.size.h,
-                        format: format,
-                        styles: map.layers[CURRENT].params.STYLES,
-                        srs: map.layers[CURRENT].params.SRS};
-                    
-                    // handle the wms 1.3 vs wms 1.1 madness
-                    if(map.layers[CURRENT].params.VERSION == "1.3.0") {
-                        params.version = "1.3.0";
-                        params.j = parseInt(e.xy.x);
-                        params.i = parseInt(e.xy.y);
-                    } else {
-                        params.version = "1.1.1";
-                        params.x = parseInt(e.xy.x);
-                        params.y = parseInt(e.xy.y);
-                    }
-                        
-                    // merge filters
-                    if(map.layers[CURRENT].params.CQL_FILTER != null) {
-                        params.cql_filter = map.layers[CURRENT].params.CQL_FILTER;
-                    } 
-                    if(map.layers[CURRENT].params.FILTER != null) {
-                        params.filter = map.layers[CURRENT].params.FILTER;
-                    }
-                    if(map.layers[CURRENT].params.FEATUREID) {
-                        params.featureid = map.layers[CURRENT].params.FEATUREID;
-                    }
-                    OpenLayers.loadURL( GEOSERVER_URL(WS), params, this, setHTML, setHTML);
-                    OpenLayers.Event.stop(e);
-                });
-                }catch(ex){console.log(ex);} 
+                map.zoomToExtent(bounds);
             }
-            
+}catch(e){}
+
             // sets the HTML provided into the nodelist element
             function setHTML(response){
                 document.getElementById('nodelist').innerHTML = response.responseText;
