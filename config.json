@@ -46,7 +46,7 @@
           "WMS":[
                     {
                     "name":"poly_landmarks",
-                    "url":"/geoserver/tiger/wms",
+                    "url":"http://siha-geoserver.adasasistemas.com/geoserver/tiger/wms",
                     "layers":["tiger:poly_landmarks"],
                     "styles":"",
                     "transparent":true,
@@ -55,7 +55,35 @@
           				},
                     {
                       "name":"tiger_roads",
-                      "url":"/geoserver/tiger/wms",
+                      "url":"http://siha-geoserver.adasasistemas.com/geoserver/tiger/wms",
+                      "layers":["tiger:tiger_roads"],
+                      "styles":"",
+                      "transparent":true,
+                      "isBaseLayer":false,
+                      "xy":{"EPSG:23029" : false}
+                    }
+          ]
+          
+        },
+      {
+          "id": "SIHA",
+          "name": "Manhattan (NY) landmarks",
+          "workspace":"tiger",
+          "bounds":[-74.047185, 40.679648,-73.90782, 40.882078],
+          "type":"WMS",
+          "WMS":[
+                    {
+                    "name":"poly_landmarks",
+                    "url":"http://siha-geoserver.adasasistemas.com/geoserver/tiger/wms",
+                    "layers":["tiger:poly_landmarks"],
+                    "styles":"",
+                    "transparent":true,
+                    "isBaseLayer":true,
+                    "xy":{"EPSG:23029" : false}
+          				},
+                    {
+                      "name":"tiger_roads",
+                      "url":"http://siha-geoserver.adasasistemas.com/geoserver/tiger/wms",
                       "layers":["tiger:tiger_roads"],
                       "styles":"",
                       "transparent":true,

@@ -13,14 +13,13 @@
                maxBBox :[-3789294.8875171,2523306.0998924,2472426.4684829,6324366.6417768]
             }
           
-				GEOSERVER.configure=function (data,mapa){
-              if (mapa){
-                
-               	$.extend(mapa,data)
+				GEOSERVER.configure=function (data,id){
+              if (id){
+
+                  $.extend(GEOSERVER.mapas[id],data,{type:"WMS"})
                
               } else {
               		$.extend(this,data);
-						this.configured=true;	                	
               }  
             }
             GEOSERVER.getById=function getById(id){
@@ -29,19 +28,19 @@
                 	if (mapa.id==id) return mapa;
               }
               return null;
-            }  
-            GEOSERVER.loader=function (id){
+ 
+        	  GEOSERVER.loader=function (id){
               	var mapa=this.getById(id);
         				 if (mapa.type=="JSON"){
-                            $.getJSON(mapa.path,{
-                              success:function(data){
-                                  //	$scope.current=data;
-                                     GEOSERVER.configure(data,mapa);
-                                		 GEOSERVER.show(id);
-                               },
-                              error:function(e){
-                                     console.log(e);              			
-                              }});
+
+        				             $.getJSON(mapa.path)
+                                 .success(function(data){
+                                            GEOSERVER.configure(data,mapa);
+                                		        GEOSERVER.show(id);
+        				               })
+                                 .error(function(e){
+                                                 console.log(e);              			
+                                 });
                    }else
 			        		GEOSERVER.show(id);	
             }  
