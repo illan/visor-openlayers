@@ -23,8 +23,10 @@ try{
 				GEOSERVER.configure=function (data,id){
               if (id){
 
-                  $.extend(GEOSERVER.mapas[id],data,{type:"WMS"})
-               
+                  //$.extend(GEOSERVER.mapas[id],data,{type:"WMS"})
+                  //
+               	var merge= $.extend(GEOSERVER.getById(id),data,{type:"WMS"})
+                  GEOSERVER.updateMapa(id,merge);
               } else {
               		$.extend(this,data);
               }  
@@ -36,6 +38,15 @@ try{
               }
               return null;
             }
+            GEOSERVER.updateMapa=function (id,merge){
+              for (var indx in this.mapas){
+                var mapa=this.mapas[indx];
+                	if (mapa.id==id) {
+                    this.mapas[indx]=merge;
+                  }
+              }
+              return null;
+            } 
         	  GEOSERVER.loader=function (id){
               	var mapa=this.getById(id);
         				 if (mapa.type=="JSON"){
