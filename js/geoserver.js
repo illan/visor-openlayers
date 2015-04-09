@@ -88,8 +88,7 @@ try{
                 **/
               GEOSERVER.initOpenLayers(id);
             }
-            
-}catch(e){}
+
 
 
  var map;
@@ -304,4 +303,11 @@ GEOSERVER.initOpenLayers=function(id){
           }
           map.updateSize()
         }
+}
+
+
+            
+}catch(e){
+  
+  console.log(e);
 }
