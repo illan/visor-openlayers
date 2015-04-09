@@ -19,8 +19,8 @@
           				},
                     {
                       "name":"municipios",
-                      "url":"/geoserver/SIHA/wms",
-                      "layers":["SIHA:municipios"],
+                      "url":"http://siha-geoserver.adasasistemas.com/geoserver/SIHA/wms",
+                      "layers":"SIHA:municipios",
                       "styles":"",
                       "transparent":true,
                       "isBaseLayer":false,
@@ -28,8 +28,8 @@
                     },
                	  {
                       "name":"estaciones",
-                      "url":"/geoserver/SIHA/wms",
-                      "layers":["SIHA:estaciones"],
+                      "url":"http://siha-geoserver.adasasistemas.com/geoserver/SIHA/wms",
+                      "layers":"SIHA:estaciones",
                       "styles":"",
                       "transparent":true,
                       "isBaseLayer":false,
@@ -47,7 +47,7 @@
                     {
                     "name":"poly_landmarks",
                     "url":"http://siha-geoserver.adasasistemas.com/geoserver/tiger/wms",
-                    "layers":["tiger:poly_landmarks"],
+                    "layers":"tiger:poly_landmarks",
                     "styles":"",
                     "transparent":true,
                     "isBaseLayer":true,
@@ -56,7 +56,7 @@
                     {
                       "name":"tiger_roads",
                       "url":"http://siha-geoserver.adasasistemas.com/geoserver/tiger/wms",
-                      "layers":["tiger:tiger_roads"],
+                      "layers":"tiger:tiger_roads",
                       "styles":"",
                       "transparent":true,
                       "isBaseLayer":false,
@@ -67,24 +67,24 @@
         },
       {
           "id": "SIHA",
-          "name": "Manhattan (NY) landmarks",
+          "name": "multiples capas",
           "workspace":"SIHA",
-          "bounds":[-74.047185, 40.679648,-73.90782, 40.882078],
+          "bounds":[-19799.8828125, 3897717.75,1132637, 4864023.5],
           "type":"WMS",
           "WMS":[
                     {
-                    "name":"poly_landmarks",
-                    "url":"http://siha-geoserver.adasasistemas.com/geoserver/tiger/wms",
-                    "layers":["tiger:poly_landmarks"],
-                    "styles":"",
-                    "transparent":true,
-                    "isBaseLayer":true,
-                    "xy":{"EPSG:23029" : false}
-          				},
-                    {
-                      "name":"tiger_roads",
-                      "url":"http://siha-geoserver.adasasistemas.com/geoserver/tiger/wms",
-                      "layers":["tiger:tiger_roads"],
+                      "name":"municipios",
+                      "url":"http://siha-geoserver.adasasistemas.com/geoserver/SIHA/wms",
+                      "layers":"SIHA:municipios",
+                      "styles":"",
+                      "transparent":true,
+                      "isBaseLayer":true,
+                      "xy":{"EPSG:23029" : false}
+                    },
+               	  {
+                      "name":"estaciones",
+                      "url":"http://siha-geoserver.adasasistemas.com/geoserver/SIHA/wms",
+                      "layers":"SIHA:estaciones",
                       "styles":"",
                       "transparent":true,
                       "isBaseLayer":false,
