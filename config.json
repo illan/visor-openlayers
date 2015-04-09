@@ -98,7 +98,7 @@
           "workspace": "SIHA",
           "type":"JSON",
           "name": "Mapa precipitaciones",
-          "path":"/mapas/precipitaciones.json"
+          "path":"mapas/precipitaciones.json"
         }
 	],
   "servicios":[
