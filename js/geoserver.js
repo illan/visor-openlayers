@@ -42,7 +42,7 @@ try{
 
         				             $.getJSON(mapa.path)
                                  .success(function(data){
-                                            GEOSERVER.configure(data,mapa);
+                                            GEOSERVER.configure(data,id);
                                 		        GEOSERVER.show(id);
         				               })
                                  .error(function(e){
